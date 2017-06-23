@@ -1,0 +1,62 @@
+unit Unit3;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, sqldb, mysql55conn, FileUtil, Forms, Controls, Graphics,
+  Dialogs, StdCtrls;
+
+type
+
+  { TForm3 }
+
+  TForm3 = class(TForm)
+    Button1: TButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    MySQL55Connection1: TMySQL55Connection;
+    SQLQuery1: TSQLQuery;
+    SQLTransaction1: TSQLTransaction;
+    procedure Button1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+
+var
+  Form3: TForm3;
+
+implementation
+
+{$R *.lfm}
+
+{ TForm3 }
+
+procedure TForm3.Button1Click(Sender: TObject);
+var i:String;
+begin
+i:=DBGrid1.DataSource.DataSet.FieldByName('id').AsString;
+SQLQuery1.Close;
+SQLQuery1.SQL.Clear;
+
+SQLQuery1.SQL.Add('Delete from `artists`.`spravochnik` where id = "'+i+'"');
+SQLQuery1.ExecSQL;
+SQLTransaction1.Commit;
+SQLQuery1.Close;
+SQLQuery1.SQL.Clear;
+SQLQuery1.SQL.Add('Select * from spravochnik');
+SQLQuery1.Open;
+end;
+
+
+procedure TForm3.FormCreate(Sender: TObject);
+begin
+
+end;
+
+end.
+

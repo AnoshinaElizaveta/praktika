@@ -1,0 +1,68 @@
+object Form3: TForm3
+  Left = 323
+  Height = 240
+  Top = 181
+  Width = 320
+  Caption = 'Form3'
+  ClientHeight = 240
+  ClientWidth = 320
+  OnCreate = FormCreate
+  LCLVersion = '1.6.0.4'
+  object Edit1: TEdit
+    Left = 27
+    Height = 23
+    Top = 27
+    Width = 80
+    TabOrder = 0
+    Text = 'Edit1'
+  end
+  object Edit2: TEdit
+    Left = 27
+    Height = 23
+    Top = 55
+    Width = 80
+    TabOrder = 1
+    Text = 'Edit2'
+  end
+  object Button1: TButton
+    Left = 224
+    Height = 25
+    Top = 80
+    Width = 75
+    Caption = 'Button1'
+    OnClick = Button1Click
+    TabOrder = 2
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = MySQL55Connection1
+    Options = []
+    left = 192
+    top = 24
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL55Connection1
+    Transaction = SQLTransaction1
+    Options = []
+    Params = <>
+    left = 224
+    top = 24
+  end
+  object MySQL55Connection1: TMySQL55Connection
+    Connected = False
+    LoginPrompt = False
+    DatabaseName = 'artist'
+    KeepConnection = False
+    Params.Strings = (
+      'Port=3306'
+    )
+    Password = '1234'
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    HostName = '127.0.0.1'
+    Options = []
+    left = 280
+    top = 24
+  end
+end

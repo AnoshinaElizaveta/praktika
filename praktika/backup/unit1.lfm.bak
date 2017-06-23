@@ -1,0 +1,210 @@
+object Form1: TForm1
+  Left = 374
+  Height = 411
+  Top = 172
+  Width = 882
+  Caption = 'Form1'
+  ClientHeight = 411
+  ClientWidth = 882
+  OnCreate = FormCreate
+  LCLVersion = '1.6.0.4'
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 272
+    Top = 0
+    Width = 568
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'Author'
+        FieldName = 'Author'
+      end    
+      item
+        MaxSize = 64
+        Title.Caption = 'Bdate'
+        FieldName = 'Bdate'
+      end    
+      item
+        MaxSize = 64
+        Title.Caption = 'Ddate'
+        FieldName = 'Ddate'
+      end    
+      item
+        Title.Caption = 'StartOfCreation'
+        Width = 100
+        FieldName = 'StartOfCreation'
+      end    
+      item
+        Title.Caption = 'Pictures'
+        FieldName = 'Pictures'
+      end>
+    DataSource = DataSource1
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 568
+    Height = 25
+    Top = 0
+    Width = 123
+    Caption = 'Connect'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+  object Button2: TButton
+    Left = 568
+    Height = 25
+    Top = 24
+    Width = 123
+    Caption = 'Transaction'
+    OnClick = Button2Click
+    TabOrder = 2
+  end
+  object Button3: TButton
+    Left = 568
+    Height = 25
+    Top = 48
+    Width = 123
+    Caption = 'SQL'
+    OnClick = Button3Click
+    TabOrder = 3
+  end
+  object Button4: TButton
+    Left = 568
+    Height = 25
+    Top = 72
+    Width = 123
+    Caption = 'Disconnect'
+    OnClick = Button4Click
+    TabOrder = 4
+  end
+  object Button5: TButton
+    Left = 568
+    Height = 25
+    Top = 96
+    Width = 123
+    Caption = 'Добавление'
+    OnClick = Button5Click
+    TabOrder = 5
+  end
+  object Button7: TButton
+    Left = 64
+    Height = 25
+    Top = 304
+    Width = 123
+    Caption = 'Поиск'
+    OnClick = Button7Click
+    TabOrder = 6
+  end
+  object Edit1: TEdit
+    Left = 56
+    Height = 23
+    Top = 328
+    Width = 144
+    OnChange = Edit1Change
+    TabOrder = 7
+    TextHint = 'Введите имя ходожника'
+  end
+  object Button8: TButton
+    Left = 208
+    Height = 25
+    Top = 304
+    Width = 123
+    Caption = 'Поиск'
+    OnClick = Button8Click
+    TabOrder = 8
+  end
+  object Edit2: TEdit
+    Left = 200
+    Height = 23
+    Top = 328
+    Width = 144
+    TabOrder = 9
+    TextHint = 'ГГГГ-ММ-ДД'
+  end
+  object Button9: TButton
+    Left = 352
+    Height = 25
+    Top = 304
+    Width = 123
+    Caption = 'Поиск'
+    OnClick = Button9Click
+    TabOrder = 10
+  end
+  object Edit3: TEdit
+    Left = 344
+    Height = 23
+    Top = 328
+    Width = 144
+    TabOrder = 11
+    TextHint = 'ГГГГ-ММ-ДД'
+  end
+  object Label1: TLabel
+    Left = 72
+    Height = 15
+    Top = 284
+    Width = 114
+    Caption = 'Поиск по художнику'
+    ParentColor = False
+  end
+  object Label2: TLabel
+    Left = 200
+    Height = 15
+    Top = 284
+    Width = 136
+    Caption = 'Поиск по дате рождения'
+    ParentColor = False
+  end
+  object Label3: TLabel
+    Left = 354
+    Height = 15
+    Top = 284
+    Width = 121
+    Caption = 'Поиск по дате смерти'
+    ParentColor = False
+  end
+  object Button10: TButton
+    Left = 568
+    Height = 26
+    Top = 120
+    Width = 123
+    Caption = 'Удаление'
+    OnClick = Button10Click
+    TabOrder = 12
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = False
+    Database = MySQL55Connection1
+    Options = []
+    left = 768
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <>
+    Database = MySQL55Connection1
+    Transaction = SQLTransaction1
+    Options = []
+    Params = <>
+    left = 800
+  end
+  object DataSource1: TDataSource
+    DataSet = SQLQuery1
+    OnDataChange = DataSource1DataChange
+    left = 832
+  end
+  object MySQL55Connection1: TMySQL55Connection
+    Connected = False
+    LoginPrompt = False
+    AfterConnect = MySQL55Connection1AfterConnect
+    DatabaseName = 'artists'
+    KeepConnection = False
+    Params.Strings = (
+      'Port=3306'
+    )
+    Password = '1234'
+    Transaction = SQLTransaction1
+    UserName = 'root'
+    CharSet = 'utf8'
+    HostName = '127.0.0.1'
+    Options = []
+    left = 864
+  end
+end
